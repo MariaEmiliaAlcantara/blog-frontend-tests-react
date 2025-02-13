@@ -1,50 +1,26 @@
-# React + TypeScript + Vite
+# Simplificando Testes em React e Next.js
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositório faz parte da série **"Simplificando Testes em React e Next.js"**, onde exploramos como configurar e implementar testes eficientes em aplicações React e Next.js.
 
-Currently, two official plugins are available:
+Caso queira ver o projeto em **Next.js**, acesse este **[link](https://github.com/MariaEmiliaAlcantara/blog-frontend-tests-next)**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Ferramentas para testes
+- **Jest**: Para testes unitários.
+- **React Testing Library**: Para testes de componentes e integração.
+- **Mock Service Worker (MSW)**: Para mockar APis. 
+- **Cypress**: Para testes end-to-end (E2E).
 
-## Expanding the ESLint configuration
+## Contribuição
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests.
 
-- Configure the top-level `parserOptions` property like this:
+## Links Úteis
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+**Simplificando Testes em React e Next.js**  
+* [Parte 1 — Configuração com Jest, React Testing Library e Cypress.](https://medium.com/@mariaemilia.dev/simplificando-testes-em-react-e-next-js-configuração-com-jest-react-testing-library-e-cypress-c616b40dc8ab)  
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+[Documentação do Jest](https://jestjs.io/)  
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+[Documentação do React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)  
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+[Documentação do Cypress](https://docs.cypress.io/app/get-started/why-cypress)
