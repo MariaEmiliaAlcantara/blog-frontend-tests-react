@@ -3,6 +3,7 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "./ui/sheet"
 import { Menu } from "lucide-react"
 import { Button } from "./ui/button"
 import { Link } from "react-router-dom"
+import { CartSheet } from "./CartSheet"
 
 export const Navbar: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ export const Navbar: React.FC = () => {
         </Link>
 
         <div className="lg:hidden flex align-items gap-4">
+          <CartSheet />
           <Sheet>
             <SheetTrigger asChild>
               <Button
@@ -35,6 +37,7 @@ export const Navbar: React.FC = () => {
 
         <nav className="hidden lg:flex items-center leading-5 lg:gap-4">
           <NavbarLink title="Products" href="/products" />
+          <CartSheet />
         </nav>
       </div>
     </header>

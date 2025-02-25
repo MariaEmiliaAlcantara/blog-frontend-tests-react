@@ -50,7 +50,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         />
       </CardContent>
       <CardFooter className="p-4">
-        <AddToCartButton />
+        <AddToCartButton product={product} />
       </CardFooter>
     </Card>
   )

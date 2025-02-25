@@ -4,6 +4,7 @@ import { ProductCard } from "./ProductCard"
 import { Product } from "@/interfaces/product.interface"
 import { formatPrice } from "@/utils/formatPrice"
 import { calculateDiscount } from "@/utils/calculateDiscount"
+import { ReduxProvider } from "@/redux/ReduxProvider"
 
 describe("ProductCard", () => {
   const productWithoutDiscount: Product = {
@@ -35,7 +36,9 @@ describe("ProductCard", () => {
 
   describe("when the product has no discount", () => {
     beforeEach(() => {
-      render(<ProductCard product={productWithoutDiscount} />)
+      render(<ProductCard product={productWithoutDiscount} />, {
+        wrapper: ReduxProvider,
+      })
     })
 
     test("renders the product price, which should be the same as the price with discount (0%)", () => {
@@ -55,7 +58,9 @@ describe("ProductCard", () => {
 
   describe("when the product has a discount", () => {
     beforeEach(() => {
-      render(<ProductCard product={productWithDiscount} />)
+      render(<ProductCard product={productWithDiscount} />, {
+        wrapper: ReduxProvider,
+      })
     })
 
     test("renders the price with discount", () => {
