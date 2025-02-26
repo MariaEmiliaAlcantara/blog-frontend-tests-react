@@ -15,54 +15,59 @@ const initialState: CartState = {
   totalPrice: 0,
 }
 
-const calculateTotalItems = (products: ProductCart[]) => {
+const updateCart = (cartState: CartState) => {
+  cartState.totalItems = calculateCartTotalItems(cartState.products)
+  cartState.totalPrice = calculateCartTotalPrice(cartState.products)
+}
+
+const calculateCartTotalItems = (products: ProductCart[]) => {
   return products.reduce((total, product) => total + product.quantity, 0)
 }
 
-const calculateTotalPrice = (products: ProductCart[]) => {
-  return products.reduce(
-    (total, product) =>
-      total +
-      product.quantity *
-        calculateDiscount({
-          price: product.price,
-          discountPercentage: product.discountPercentage,
-        }),
-    0
-  )
+const calculateCartTotalPrice = (products: ProductCart[]): number => {
+  return products.reduce((total, product) => {
+    const productTotalPrice = calculateProductTotalPrice(product)
+    return total + productTotalPrice
+  }, 0)
 }
 
-const updateCart = (state: CartState) => {
-  state.totalItems = calculateTotalItems(state.products)
-  state.totalPrice = calculateTotalPrice(state.products)
+const calculateProductTotalPrice = (product: ProductCart): number => {
+  const { price, discountPercentage } = product
+
+  const productPriceWithDiscount = calculateDiscount({
+    price: price,
+    discountPercentage: discountPercentage,
+  })
+
+  return product.quantity * productPriceWithDiscount
 }
 
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addToCart(state, action: PayloadAction<Product>) {
-      const existingProduct = state.products.find(
+    addToCart(cartState, action: PayloadAction<Product>) {
+      const existingProduct = cartState.products.find(
         (product) => product.id === action.payload.id
       )
 
       if (existingProduct) {
-        existingProduct.quantity += 1
+        existingProduct.quantity = existingProduct.quantity + 1
       } else {
-        state.products.push({ ...action.payload, quantity: 1 })
+        cartState.products.push({ ...action.payload, quantity: 1 })
       }
 
-      updateCart(state)
+      updateCart(cartState)
     },
-    removeFromCart(state, action: PayloadAction<number>) {
-      state.products = state.products.filter(
+    removeFromCart(cartState, action: PayloadAction<number>) {
+      cartState.products = cartState.products.filter(
         (product) => product.id !== action.payload
       )
-      updateCart(state)
+      updateCart(cartState)
     },
-    clearCart(state) {
-      state.products = []
-      updateCart(state)
+    clearCart(cartState) {
+      cartState.products = []
+      updateCart(cartState)
     },
   },
 })
