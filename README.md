@@ -17,7 +17,8 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull r
 ## Links Úteis
 
 **Simplificando Testes em React e Next.js**  
-* [Parte 1 — Configuração com Jest, React Testing Library e Cypress.](https://medium.com/@mariaemilia.dev/simplificando-testes-em-react-e-next-js-configuração-com-jest-react-testing-library-e-cypress-c616b40dc8ab)  
+* [Parte 1 — Configuração com Jest, React Testing Library e Cypress.](https://medium.com/@mariaemilia.dev/simplificando-testes-em-react-e-next-js-configuração-com-jest-react-testing-library-e-cypress-c616b40dc8ab)
+* [Parte 2 — Testes Unitários e de Componentes.](https://medium.com/@mariaemilia.dev/simplificando-testes-em-react-e-next-js-testes-unit%C3%A1rios-e-de-componentes-988a3ad7e45f)
 
 [Documentação do Jest](https://jestjs.io/)  
 
